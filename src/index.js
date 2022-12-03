@@ -1,16 +1,15 @@
 // import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // // import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetch } from './fetch';
 
 const refs = {
   form: document.querySelector('.search-form'),
   // button: document.querySelector('button'),
-  // searchQuery: document.querySelector('input'),
 };
 
 refs.form.addEventListener('submit', onSearch);
-// refs.searchQuery.addEventListener('input', onInput);
 
 function onSearch(e) {
   e.preventDefault();

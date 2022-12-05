@@ -1,0 +1,106 @@
+@mixin font($fs, $fw, $lh, $ls) {
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: $lh;
+  letter-spacing: $ls;
+}
+
+// @mixin font($fs: false, $fw: false, $lh: false, $ls: false) {
+//   @if $fs {
+//     font-size: $fs;
+//   }
+//   @if $fw {
+//     font-weight: $fw;
+//   }
+//   @if $lh {
+//     line-height: calc($lh / $fs);
+//   }
+//   @if $ls {
+//     letter-spacing: $ls;
+//   }
+// }
+
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin retina3x {
+  @media (min-device-pixel-ratio: 3),
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+    @content;
+  }
+}
+
+@mixin animation($one, $two, $three, $time: 250ms, $func: $timing-function) {
+  transition-property: $one, $two, $three;
+  transition-duration: $time;
+  transition-timing-function: $func;
+}
+
+@mixin decor($w: 144px, $h: 144px, $br, $sh) {
+  width: $w;
+  height: $h;
+  border-radius: $br;
+  box-shadow: $sh;
+}
+
+@mixin item($q, $gp) {
+  flex-basis: calc((100% - ($q - 1) * $gp) / $q);
+}
+// q-number of columns
+
+@mixin flex(
+  $dsp: flex,
+  $fd: row,
+  $ai: center,
+  $jc: center,
+  $gp: null,
+  $fw: nowrap
+) {
+  display: $dsp;
+  flex-direction: $fd;
+  align-items: $ai;
+  justify-content: $jc;
+  gap: $gp;
+  flex-wrap: $fw;
+}
+
+@mixin centered-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin centered-margin {
+  margin: 0 auto;
+}
+
+@mixin response {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}

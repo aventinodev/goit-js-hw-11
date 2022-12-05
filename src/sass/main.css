@@ -1,0 +1,137 @@
+@import '/node_modules/modern-normalize/modern-normalize.css';
+body {
+  font-family: sans-serif;
+  color: #212121;
+  background-color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapp-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(96, 16, 245);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form input {
+  width: 25vw;
+  height: 4vw;
+  padding-left: 10px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 2px 0 0 2px;
+  margin-right: 0;
+  font-size: 2vw;
+  line-height: 3vw;
+}
+
+.search-form button {
+  border: none;
+  border-radius: 0 2px 2px 0;
+  width: 5vw;
+  height: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form button:hover,
+.search-form button:focus {
+  background-color: #ddd6d6;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  font-size: 2vw;
+  fill: #212121;
+}
+
+.gallery {
+  max-width: 468px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+@media screen and (min-width: 768px) {
+  .gallery {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+.photo-card {
+  overflow: hidden;
+  border: none;
+  border-radius: 0 4px 0 4px;
+}
+
+.gallery__link {
+  display: flex;
+  margin-bottom: 15px;
+  text-decoration: none;
+  height: 100%;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 768px) {
+  .gallery__link {
+    flex-basis: calc((100% - 30px) / 2);
+  }
+}
+
+.gallery__img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.gallery__info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  row-gap: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.gallery__item {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 480px) {
+  p,
+b {
+    font-size: 3vw;
+    line-height: 4.5vw;
+  }
+}/*# sourceMappingURL=main.css.map */

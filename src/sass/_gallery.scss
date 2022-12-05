@@ -1,0 +1,153 @@
+.wrapp-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  // height: 10vh;
+  background-color: rgb(96, 16, 245);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-form input {
+  width: 25vw;
+  height: 4vw;
+  padding-left: 10px;
+
+  background-color: #ffffff;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  margin-right: 0;
+  font-size: 2vw;
+  line-height: 3vw;
+}
+.search-form button {
+  border: none;
+  border-radius: 0 4px 4px 0;
+  width: 5vw;
+  height: 4vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-form button:hover,
+.search-form button:focus {
+  background-color: #ddd6d6;
+}
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-size: 2vw;
+  fill: #212121;
+}
+.wrapper {
+  // padding-top: 60px;
+}
+.gallery {
+  max-width: 468px;
+  margin: 0 auto;
+  padding: 15px;
+
+  @include tablet {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  @include desktop {
+    max-width: 1400px;
+  }
+}
+.photo-card {
+  border: none;
+  border-radius: 0 15px 0 15px;
+  overflow: hidden;
+
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+  @media screen and (max-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  @include tablet {
+    margin-bottom: 0;
+    @include item(2, 30px);
+  }
+  @include desktop {
+    @include item(3, 30px);
+  }
+
+  &:hover .gallery__info,
+  &:focus .gallery__info {
+    background-color: #ddd6d6;
+  }
+}
+
+.gallery__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.gallery__wrap {
+  flex-grow: 1;
+}
+.gallery__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery__info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  row-gap: 15px;
+  padding: 15px;
+  color: #212121;
+}
+.gallery__item {
+  display: flex;
+  flex-direction: column;
+}
+@include response {
+  p,
+  b {
+    font-size: 3vw;
+    line-height: 4.5vw;
+  }
+}
+
+.load-more {
+  display: block;
+  margin: 0 auto 15px;
+  border: none;
+  border-radius: 4px;
+
+  background-color: rgb(96, 16, 245);
+  color: #ffffff;
+  padding: 8px 15px;
+  font-size: 2vw;
+  line-height: 3vw;
+  &:hover,
+  &:focus {
+    background-color: #ddd6d6;
+    color: #212121;
+  }
+  @include tablet {
+    margin-top: 15px;
+  }
+}
+.is-hidden {
+  visibility: hidden;
+}
+.is-shown {
+  visibility: visible;
+}

@@ -97,3 +97,24 @@ Pages, в ветку `gh-pages`, каждый раз когда обновляе
 3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
    отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
    скрипта будет указано в чем проблема.
+   <!-- функціі  -->
+   // =================================== // function onSearch(e) { //
+   e.preventDefault();
+
+// page = 1; // onHideLoadBtn(); // refs.gallery.innerHTML = ''; // searchQuery
+= e.currentTarget.elements.searchQuery.value.trim(); // onFetch(searchQuery,
+page, perPage) // .then(({ hits, totalHits }) => { // cards = hits; //
+amountCards = totalHits;
+
+// if (!amountCards) { // onInfo(); // } else { // onTotalHits(totalHits); //
+markupCardGallery(cards); // galleryLightbox.refresh(); // } // if
+(amountCards > perPage) { // onShowLoadBtn(); // onLockSubmitBtn(); // } // })
+// .catch(error => { // onError(); // }); // } //
+===================================================
+//======================================= // function onLoad(e) { // page += 1;
+// onFetch(searchQuery, page, perPage) // .then(({ hits, totalHits }) => { //
+markupCardGallery(hits); // galleryLightbox.refresh(); // onLockSubmitBtn();
+
+// if (amountCards - perPage \* page < perPage) { // unLockSubmitBtn(); //
+onHideLoadBtn(); // onReachedTheEnd(); // } // }) // .catch(error => { //
+onError(); // }); // } // ======================================

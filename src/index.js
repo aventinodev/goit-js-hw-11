@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { onFetch } from './js/fetch-api';
 import { markupCardGallery } from './js/template';
@@ -59,36 +59,6 @@ async function onSearch(e) {
     append.onError;
   }
 }
-// ===================================
-// function onSearch(e) {
-//   e.preventDefault();
-
-//   page = 1;
-//   onHideLoadBtn();
-//   refs.gallery.innerHTML = '';
-//   searchQuery = e.currentTarget.elements.searchQuery.value.trim();
-//   onFetch(searchQuery, page, perPage)
-//     .then(({ hits, totalHits }) => {
-//       cards = hits;
-//       amountCards = totalHits;
-
-//       if (!amountCards) {
-//         onInfo();
-//       } else {
-//         onTotalHits(totalHits);
-//         markupCardGallery(cards);
-//         galleryLightbox.refresh();
-//       }
-//       if (amountCards > perPage) {
-//         onShowLoadBtn();
-//         onLockSubmitBtn();
-//       }
-//     })
-//     .catch(error => {
-//       onError();
-//     });
-// }
-// ===================================================
 
 async function onLoad(e) {
   page += 1;
@@ -107,26 +77,7 @@ async function onLoad(e) {
     append.onError;
   }
 }
-//=======================================
-// function onLoad(e) {
-//   page += 1;
-//   onFetch(searchQuery, page, perPage)
-//     .then(({ hits, totalHits }) => {
-//       markupCardGallery(hits);
-//       galleryLightbox.refresh();
-//       onLockSubmitBtn();
 
-//       if (amountCards - perPage * page < perPage) {
-//         unLockSubmitBtn();
-//         onHideLoadBtn();
-//         onReachedTheEnd();
-//       }
-//     })
-//     .catch(error => {
-//       onError();
-//     });
-// }
-// ======================================
 function onClearField(e) {
   refs.input.value = '';
   refs.gallery.innerHTML = '';

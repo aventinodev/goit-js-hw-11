@@ -42,8 +42,8 @@ async function onSearch(e) {
   }
   try {
     await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
-      if (!hits) {
-        onWorn();
+      if (!totalHits) {
+        onInfo();
       } else {
         onTotalHits(totalHits);
         markupCardGallery(hits);

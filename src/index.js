@@ -129,7 +129,9 @@ async function onLoad(e) {
 // ======================================
 function onClearField(e) {
   refs.input.value = '';
+  refs.gallery.innerHTML = '';
   unLockSubmitBtn();
+  onHideLoadBtn();
 }
 
 function onHideLoadBtn() {

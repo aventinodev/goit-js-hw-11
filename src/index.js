@@ -1,108 +1,142 @@
-// import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// // import SimpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
+// import SimpleLightbox from '~node_modules/simplelightbox';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { onFetch } from './js/fetch-api';
-// import { markupCardGallery } from './js/template';
+import { markupCardGallery } from './js/template';
+// import * as append from './js/append';
 
 const refs = {
   form: document.querySelector('.search-form'),
   gallery: document.querySelector('.gallery'),
   loadButton: document.querySelector('.load-more'),
+  submitBtn: document.querySelector('.search-form button'),
+  input: document.querySelector('.search-form input'),
 };
-let query = '';
+
+let searchQuery = '';
 let page = 1;
 let perPage = 40;
+let cards = [];
+let amountCards = 0;
+
+let galleryLightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 refs.form.addEventListener('submit', onSearch);
 refs.loadButton.addEventListener('click', onLoad);
+refs.input.addEventListener('focus', onClearField);
 
 function onSearch(e) {
   e.preventDefault();
-  query = e.currentTarget.elements.searchQuery.value.trim();
 
-  if (!query) {
+  page = 1;
+  onHideLoadBtn();
+  refs.gallery.innerHTML = '';
+  searchQuery = e.currentTarget.elements.searchQuery.value.trim();
+
+  if (!searchQuery) {
     return onWornEmptyField();
   }
-  onFetch(query, page, perPage)
-    .then(query => {
-      if (!query.hits.length) {
-        onWorn();
-      } else {
-        onTotalHits(query);
-        markupCardGallery(query.hits);
-        console.log(query);
+  //   const fetchData = await onFetch(searchQuery, page, perPage)
+  //     .then(({ hits, totalHits }) => {
+  //       cards = hits;
+  //       amountCards = totalHits;
 
-        refs.loadButton.classList.remove('is-hidden');
+  //       if (!amountCards) {
+  //         onWorn();
+  //       } else {
+  //         onTotalHits(totalHits);
+  //         markupCardGallery(cards);
+  //         galleryLightbox.refresh();
+  //       }
+  //       if (amountCards > perPage) {
+  //         onShowLoadBtn();
+  //         onLockSubmitBtn();
+  //       }
+  //     })
+  //     .catch(error => {
+  //       onError();
+  //     });
+  // }
+
+  onFetch(searchQuery, page, perPage)
+    .then(({ hits, totalHits }) => {
+      cards = hits;
+      amountCards = totalHits;
+
+      if (!amountCards) {
+        onInfo();
+      } else {
+        onTotalHits(totalHits);
+        markupCardGallery(cards);
+        galleryLightbox.refresh();
+      }
+      if (amountCards > perPage) {
+        onShowLoadBtn();
+        onLockSubmitBtn();
       }
     })
     .catch(error => {
       onError();
     });
-  page += 1;
 }
 function onLoad(e) {
   page += 1;
-  console.log(page);
-  onFetch(query, page, perPage)
-    .then(query => {
-      onTotalHits(query);
-      markupCardGallery(query.hits);
-      console.log(query);
-      console.log(page);
+  onFetch(searchQuery, page, perPage)
+    .then(({ hits, totalHits }) => {
+      cards = hits;
+      amountCards = totalHits;
+
+      markupCardGallery(cards);
+      galleryLightbox.refresh();
+      onLockSubmitBtn();
+
+      if (amountCards - perPage * page < perPage) {
+        unLockSubmitBtn();
+        onHideLoadBtn();
+        onReachedTheEnd();
+      }
     })
     .catch(error => {
       onError();
     });
 }
 
+function onClearField(e) {
+  refs.input.value = '';
+  unLockSubmitBtn();
+}
+
+function onHideLoadBtn() {
+  refs.loadButton.classList.add('is-hidden');
+}
+
+function onShowLoadBtn() {
+  refs.loadButton.classList.remove('is-hidden');
+}
+function onLockSubmitBtn() {
+  refs.submitBtn.setAttribute('disabled', true);
+}
+function unLockSubmitBtn() {
+  refs.submitBtn.removeAttribute('disabled');
+}
 function onWornEmptyField() {
   Notify.warning('Field is empty. Please, enter your search query');
 }
-function onWorn() {
-  Notify.warning(
+function onInfo() {
+  Notify.info(
     'Sorry, there are no images matching your search query. Please try again'
   );
 }
-function onTotalHits({ totalHits }) {
+function onTotalHits(totalHits) {
   Notify.success(`Hooray! We found ${totalHits} images.`);
 }
 function onError() {
   Notify.failure('Oops, somthing wrong!');
 }
-
-function templateCard({
-  webformatURL,
-  largeImageURL,
-  tags,
-  likes,
-  views,
-  comments,
-  downloads,
-}) {
-  return `<div class="photo-card">
-        <a class="gallery__link" href="${largeImageURL} target="_blank" rel="noopener noreferrer">
-        <div class="gallery__wrap">
-        <img class="gallery__img" src="${webformatURL}" alt="${tags}" loading="lazy" width="480" />
-       </div>
-        <div class="gallery__info">
-          <p class="gallery__item">
-            <b>Likes</b>${likes}
-          </p>
-          <p class="gallery__item">
-            <b>Views</b>${views}
-          </p>
-          <p class="gallery__item">
-            <b>Comments</b>${comments}
-          </p>
-          <p class="gallery__item">
-            <b>Downloads</b>${downloads}
-          </p>
-        </div>
-       </a>
-       </div>`;
-}
-function markupCardGallery(hits) {
-  const galerryMarkup = hits.map(templateCard).join('');
-  refs.gallery.innerHTML = galerryMarkup;
+function onReachedTheEnd() {
+  Notify.info('You have reached the maximum. Try new request');
 }

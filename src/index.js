@@ -5,7 +5,7 @@ import { markupCardGallery } from './js/template';
 import SimpleLightbox from '~node_modules/simplelightbox';
 // import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-// import * as append from './js/append';
+import * as append from './js/append';
 // import { onScroll } from './js/scroll';
 
 const refs = {
@@ -33,30 +33,30 @@ async function onSearch(e) {
   e.preventDefault();
 
   page = 1;
-  onHideLoadBtn();
+  append.onHideLoadBtn;
   refs.gallery.innerHTML = '';
   searchQuery = e.currentTarget.elements.searchQuery.value.trim();
 
   if (!searchQuery) {
-    return onWornEmptyField();
+    return append.onWornEmptyField;
   }
   try {
     await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
       if (!totalHits) {
-        onInfo();
+        append.onInfo;
       } else {
-        onTotalHits(totalHits);
+        append.onTotalHits;
         markupCardGallery(hits);
       }
 
       if (totalHits > perPage) {
-        onShowLoadBtn();
-        onLockSubmitBtn();
+        append.onShowLoadBtn;
+        append.onLockSubmitBtn;
       }
     });
     await galleryLightbox.refresh();
   } catch (error) {
-    onError();
+    append.onError;
   }
 }
 // ===================================
@@ -95,16 +95,16 @@ async function onLoad(e) {
   try {
     await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
       if (totalHits - perPage * page < perPage) {
-        unLockSubmitBtn();
-        onHideLoadBtn();
-        onReachedTheEnd();
+        append.unLockSubmitBtn;
+        append.onHideLoadBtn;
+        append.onReachedTheEnd;
       }
-      onLockSubmitBtn();
+      append.onLockSubmitBtn;
       markupCardGallery(hits);
     });
     await galleryLightbox.refresh();
   } catch (error) {
-    onError();
+    append.onError;
   }
 }
 //=======================================
@@ -130,37 +130,6 @@ async function onLoad(e) {
 function onClearField(e) {
   refs.input.value = '';
   refs.gallery.innerHTML = '';
-  unLockSubmitBtn();
-  onHideLoadBtn();
-}
-
-function onHideLoadBtn() {
-  refs.loadButton.classList.add('is-hidden');
-}
-
-function onShowLoadBtn() {
-  refs.loadButton.classList.remove('is-hidden');
-}
-function onLockSubmitBtn() {
-  refs.submitBtn.setAttribute('disabled', true);
-}
-function unLockSubmitBtn() {
-  refs.submitBtn.removeAttribute('disabled');
-}
-function onWornEmptyField() {
-  Notify.warning('Field is empty. Please, enter your search query');
-}
-function onInfo() {
-  Notify.info(
-    'Sorry, there are no images matching your search query. Please try again'
-  );
-}
-function onTotalHits(totalHits) {
-  Notify.success(`Hooray! We found ${totalHits} images.`);
-}
-function onError() {
-  Notify.failure('Oops, somthing wrong!');
-}
-function onReachedTheEnd() {
-  Notify.info('You have reached the maximum. Try new request');
+  append.unLockSubmitBtn;
+  append.onHideLoadBtn;
 }

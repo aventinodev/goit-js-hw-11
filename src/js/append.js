@@ -3,6 +3,9 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 function onHideLoadBtn() {
   refs.loadButton.classList.add('is-hidden');
 }
+function onTotalHits(totalHits) {
+  Notify.success(`Hooray! We found ${totalHits} images.`);
+}
 
 function onShowLoadBtn() {
   refs.loadButton.classList.remove('is-hidden');

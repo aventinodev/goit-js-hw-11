@@ -1,5 +1,5 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+var debounce = require('lodash.debounce');
 import { onFetch } from './js/fetch-api';
 import { markupCardGallery } from './js/template';
 import SimpleLightbox from '~node_modules/simplelightbox';
@@ -7,6 +7,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import * as append from './js/append';
 // import { onScroll } from './js/scroll';
+// import { onInfinityScroll } from './js/infinity_scroll';
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -28,7 +29,7 @@ let galleryLightbox = new SimpleLightbox('.gallery a', {
 refs.form.addEventListener('submit', onSearch);
 refs.loadButton.addEventListener('click', onLoad);
 refs.input.addEventListener('focus', onClearField);
-// =================================================
+
 async function onSearch(e) {
   e.preventDefault();
   page = 1;
@@ -53,6 +54,7 @@ async function onSearch(e) {
         onLockSubmitBtn();
       }
     });
+
     await galleryLightbox.refresh();
   } catch (error) {
     append.onError();
@@ -70,7 +72,12 @@ async function onLoad(e) {
       }
       onLockSubmitBtn();
       markupCardGallery(hits);
+      refs.gallery.i;
+      if (window.scrollY) {
+        window.scroll(0, 0);
+      }
     });
+
     await galleryLightbox.refresh();
   } catch (error) {
     append.onError();

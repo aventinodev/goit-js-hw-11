@@ -2,18 +2,18 @@
 
 // window.addEventListener('scroll', debounce(onInfinityScroll, 300));
 
+// =================================================
 // function onInfinityScroll() {
-//   const query = document.querySelector('searchQuery');
-//   const documentRect = document.documentElement.getBoundingClientRect();
-
-//   console.log(documentRect.bottom);
-//   if (documentRect.bottom < document.documentElement.clientHeight + 150) {
-//     console.log('done');
-//     page += 1;
-
+//   const cardHeight =
+//     refs.gallery.firstElementChild.getBoundingClientRect().height;
+//   console.log(cardHeight);
+//   const documentCoord = document.documentElement.getBoundingClientRect();
+//   const c = document.documentElement.clientHeight;
+//   console.log(documentCoord.bottom);
+//   if (documentCoord.bottom < document.documentElement.clientHeight + 150) {
 //     onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
 //       markupCardGallery(hits);
 //     });
+//     console.log('DoNE');
 //   }
 // }
-// .firstElementChild.getBoundingClientRect().height;

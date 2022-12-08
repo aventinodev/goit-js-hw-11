@@ -17,7 +17,7 @@ function onError() {
   Notify.failure('Oops, somthing wrong!');
 }
 function onReachedTheEnd() {
-  Notify.info('Sorry, you have reached the maximum. Try new request');
+  Notify.info('You have reached the last page. Try new request');
 }
 
 export { onTotalHits, onWornEmptyField, onInfo, onError, onReachedTheEnd };

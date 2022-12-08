@@ -70,22 +70,19 @@ img {
   font-size: 2vw;
   fill: #212121;
 }
-.wrapper {
-  padding-top: 20px;
-}
-@media screen and (min-width: 768px) {
-  .wrapper {
-    padding-top: 35px;
-  }
-}
 
 .gallery {
   max-width: 468px;
   margin: 0 auto;
-  padding: 15px;
+
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 @media screen and (min-width: 768px) {
   .gallery {
+    padding-top: 35px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;

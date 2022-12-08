@@ -1,10 +1,10 @@
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { onFetch } from './js/fetch-api';
 import { markupCardGallery } from './js/template';
 import SimpleLightbox from '~node_modules/simplelightbox';
-// import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import * as append from './js/append';
 // import { onScroll } from './js/scroll';
 
@@ -31,32 +31,31 @@ refs.input.addEventListener('focus', onClearField);
 // =================================================
 async function onSearch(e) {
   e.preventDefault();
-
   page = 1;
-  append.onHideLoadBtn;
+  onHideLoadBtn();
   refs.gallery.innerHTML = '';
   searchQuery = e.currentTarget.elements.searchQuery.value.trim();
 
   if (!searchQuery) {
-    return append.onWornEmptyField;
+    return append.onWornEmptyField();
   }
   try {
     await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
       if (!totalHits) {
-        append.onInfo;
+        append.onInfo();
       } else {
-        append.onTotalHits;
+        append.onTotalHits(totalHits);
         markupCardGallery(hits);
       }
 
       if (totalHits > perPage) {
-        append.onShowLoadBtn;
-        append.onLockSubmitBtn;
+        onShowLoadBtn();
+        onLockSubmitBtn();
       }
     });
     await galleryLightbox.refresh();
   } catch (error) {
-    append.onError;
+    append.onError();
   }
 }
 
@@ -65,22 +64,35 @@ async function onLoad(e) {
   try {
     await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
       if (totalHits - perPage * page < perPage) {
-        append.unLockSubmitBtn;
-        append.onHideLoadBtn;
-        append.onReachedTheEnd;
+        unLockSubmitBtn();
+        onHideLoadBtn();
+        append.onReachedTheEnd();
       }
-      append.onLockSubmitBtn;
+      onLockSubmitBtn();
       markupCardGallery(hits);
     });
     await galleryLightbox.refresh();
   } catch (error) {
-    append.onError;
+    append.onError();
   }
 }
 
 function onClearField(e) {
   refs.input.value = '';
   refs.gallery.innerHTML = '';
-  append.unLockSubmitBtn;
-  append.onHideLoadBtn;
+  unLockSubmitBtn();
+  onHideLoadBtn();
+}
+
+function onHideLoadBtn() {
+  refs.loadButton.classList.add('is-hidden');
+}
+function onShowLoadBtn() {
+  refs.loadButton.classList.remove('is-hidden');
+}
+function onLockSubmitBtn() {
+  refs.submitBtn.setAttribute('disabled', true);
+}
+function unLockSubmitBtn() {
+  refs.submitBtn.removeAttribute('disabled');
 }

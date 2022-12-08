@@ -35,6 +35,8 @@ img {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: rgb(96, 16, 245);
+  -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
 }
 
 .search-form {
@@ -62,6 +64,7 @@ img {
 }
 
 .search-form button {
+  display: block;
   border: none;
   border-radius: 0 4px 4px 0;
   width: 5vw;

@@ -13,8 +13,8 @@ function templateCard({
 }) {
   return `     
         <div class="gallery__wrap">
-        <a class="gallery__link" href="${largeImageURL} rel="noopener noreferrer">
-          <img class="gallery__img" src="${webformatURL}" alt="${tags}" loading="lazy" />       </a>
+        <a class="gallery__link" href="${largeImageURL}" rel="noopener noreferrer">
+          <img class="gallery__img" src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
            <div class="gallery__info">
           <p class="gallery__item">
             <b>Likes</b>${likes}

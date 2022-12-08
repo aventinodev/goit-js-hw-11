@@ -145,6 +145,7 @@
   &:focus {
     background-color: #ddd6d6;
     color: #212121;
+    transition: all 0.3s;
   }
   @include tablet {
     margin-top: 15px;

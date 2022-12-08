@@ -222,6 +222,8 @@ b {
 .load-more:hover, .load-more:focus {
   background-color: #ddd6d6;
   color: #212121;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 @media screen and (min-width: 768px) {
   .load-more {

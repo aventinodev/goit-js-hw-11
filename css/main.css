@@ -25,6 +25,11 @@ img {
 :root {
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --animation-duration: 250ms;
+  --background-color: #5604ef;
+  --background-color-secondary: #ffffff;
+  --background-color-accent: #999393;
+  --text-color-primary: #212121;
+  --text-color-secondary: #ffffff;
 }
 
 .wrapp-form {
@@ -34,9 +39,7 @@ img {
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: rgb(96, 16, 245);
-  -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--background-color);
 }
 
 .search-form {
@@ -55,7 +58,7 @@ img {
   width: 25vw;
   height: 4vw;
   padding-left: 10px;
-  background-color: #ffffff;
+  background-color: var(--background-color-secondary);
   border: none;
   border-radius: 4px 0 0 4px;
   margin-right: 0;
@@ -69,6 +72,8 @@ img {
   border-radius: 0 4px 4px 0;
   width: 5vw;
   height: 4vw;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,15 +85,20 @@ img {
           justify-content: center;
 }
 
-.search-form button:hover,
-.search-form button:focus {
-  background-color: #ddd6d6;
-}
-
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
   font-size: 2vw;
-  fill: #212121;
+  color: var(--text-color-primary);
+}
+
+.search-form button:hover,
+.search-form button:focus {
+  background-color: var(--background-color-accent);
+}
+.search-form button:hover:hover .material-symbols-outlined, .search-form button:hover:focus .material-symbols-outlined,
+.search-form button:focus:hover .material-symbols-outlined,
+.search-form button:focus:focus .material-symbols-outlined {
+  color: var(--text-color-secondary);
 }
 
 .wrapper {
@@ -188,7 +198,7 @@ img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 15px;
-  color: #212121;
+  color: var(--text-color-primary);
 }
 
 .gallery__item {
@@ -213,17 +223,21 @@ b {
   margin: 0 auto 15px;
   border: none;
   border-radius: 4px;
-  background-color: rgb(96, 16, 245);
-  color: #ffffff;
+  -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--background-color);
+  color: var(--text-color-secondary);
   padding: 8px 15px;
   font-size: 2vw;
   line-height: 3vw;
+  -webkit-transition: all var(--animation-duration) var(--timing-function);
+  transition: all var(--animation-duration) var(--timing-function);
 }
 .load-more:hover, .load-more:focus {
-  background-color: #ddd6d6;
-  color: #212121;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  background-color: var(--background-color-accent);
+  color: var(--text-color-secondary);
+  -webkit-transition: all var(--animation-duration) var(--timing-function);
+  transition: all var(--animation-duration) var(--timing-function);
 }
 @media screen and (min-width: 768px) {
   .load-more {

@@ -1,6 +1,11 @@
 :root {
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --animation-duration: 250ms;
+  --background-color: #5604ef;
+  --background-color-secondary: #ffffff;
+  --background-color-accent: #999393;
+  --text-color-primary: #212121;
+  --text-color-secondary: #ffffff;
 }
 
 .wrapp-form {
@@ -10,8 +15,7 @@
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: rgb(96, 16, 245);
-  box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--background-color);
 }
 
 .search-form {
@@ -24,7 +28,7 @@
   height: 4vw;
   padding-left: 10px;
 
-  background-color: #ffffff;
+  background-color: var(--background-color-secondary);
   border: none;
   border-radius: 4px 0 0 4px;
   margin-right: 0;
@@ -37,19 +41,26 @@
   border-radius: 0 4px 4px 0;
   width: 5vw;
   height: 4vw;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.search-form button:hover,
-.search-form button:focus {
-  background-color: #ddd6d6;
-}
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
   font-size: 2vw;
-  fill: #212121;
+  color: var(--text-color-primary);
+}
+.search-form button:hover,
+.search-form button:focus {
+  background-color: var(--background-color-accent);
+
+  &:hover .material-symbols-outlined,
+  &:focus .material-symbols-outlined {
+    color: var(--text-color-secondary);
+  }
 }
 .wrapper {
   padding-top: 20px;
@@ -116,7 +127,7 @@
   justify-content: space-between;
   padding: 15px;
 
-  color: #212121;
+  color: var(--text-color-primary);
 }
 .gallery__item {
   display: flex;
@@ -135,17 +146,18 @@
   margin: 0 auto 15px;
   border: none;
   border-radius: 4px;
-
-  background-color: rgb(96, 16, 245);
-  color: #ffffff;
+  box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--background-color);
+  color: var(--text-color-secondary);
   padding: 8px 15px;
   font-size: 2vw;
   line-height: 3vw;
+  transition: all var(--animation-duration) var(--timing-function);
   &:hover,
   &:focus {
-    background-color: #ddd6d6;
-    color: #212121;
-    transition: all 0.3s;
+    background-color: var(--background-color-accent);
+    color: var(--text-color-secondary);
+    transition: all var(--animation-duration) var(--timing-function);
   }
   @include tablet {
     margin-top: 15px;

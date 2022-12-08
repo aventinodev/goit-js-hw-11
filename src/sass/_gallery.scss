@@ -114,10 +114,6 @@
 .gallery__link {
   display: flex;
   height: 100%;
-  &:hover,
-  &:focus {
-    transform: scale(1.03);
-  }
 }
 .gallery__img {
   height: 100%;
@@ -161,7 +157,6 @@
   &:focus {
     background-color: var(--background-color-accent);
     color: var(--text-color-secondary);
-    transition: all var(--animation-duration) var(--timing-function);
   }
   @include tablet {
     margin-top: 15px;

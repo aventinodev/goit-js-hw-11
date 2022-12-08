@@ -1,8 +1,16 @@
-const { height: cardHeight } = document
-  .querySelector('.gallery')
-  .firstElementChild.getBoundingClientRect();
+// const { height: cardHeight } = document
+//   .querySelector('.gallery')
+//   .firstElementChild.getBoundingClientRect();
 
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: 'smooth',
-});
+// window.addEventListener('scroll', onScroll);
+
+// export function onScroll() {
+//   const cardHeight = document
+//     .querySelector('.gallery')
+//     .firstElementChild.getBoundingClientRect().height;
+
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
+// }

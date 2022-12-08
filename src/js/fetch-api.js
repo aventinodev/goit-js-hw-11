@@ -9,7 +9,6 @@ export async function onFetch(query, page, perPage) {
       `?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`
     );
     const data = await response.data;
-    console.log(data);
 
     return data;
   } catch (error) {

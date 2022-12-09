@@ -41,19 +41,19 @@ async function onSearch(e) {
     return append.onWornEmptyField();
   }
   try {
-    await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
-      if (!totalHits) {
-        append.onInfo();
-      } else {
-        append.onTotalHits(totalHits);
-        markupCardGallery(hits);
-      }
+    const data = await onFetch(searchQuery, page, perPage);
+    const { hits, totalHits } = data;
+    if (!totalHits) {
+      append.onInfo();
+    } else {
+      append.onTotalHits(totalHits);
+      markupCardGallery(hits);
+    }
 
-      if (totalHits > perPage) {
-        onShowLoadBtn();
-        onLockSubmitBtn();
-      }
-    });
+    if (totalHits > perPage) {
+      onShowLoadBtn();
+      onLockSubmitBtn();
+    }
 
     await galleryLightbox.refresh();
   } catch (error) {
@@ -64,19 +64,19 @@ async function onSearch(e) {
 async function onLoad(e) {
   page += 1;
   try {
-    await onFetch(searchQuery, page, perPage).then(({ hits, totalHits }) => {
-      if (totalHits - perPage * page < perPage) {
-        unLockSubmitBtn();
-        onHideLoadBtn();
-        append.onReachedTheEnd();
-      }
-      onLockSubmitBtn();
-      markupCardGallery(hits);
-      refs.gallery.i;
-      if (window.scrollY) {
-        window.scroll(0, 0);
-      }
-    });
+    const data = await onFetch(searchQuery, page, perPage);
+    const { hits, totalHits } = data;
+    if (totalHits - perPage * page < perPage) {
+      unLockSubmitBtn();
+      onHideLoadBtn();
+      append.onReachedTheEnd();
+    }
+    onLockSubmitBtn();
+    markupCardGallery(hits);
+
+    if (window.scrollY) {
+      window.scroll(0, 0);
+    }
 
     await galleryLightbox.refresh();
   } catch (error) {

@@ -1,9 +1,9 @@
 :root {
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --animation-duration: 250ms;
-  --background-color: #5604ef;
+  --background-color: #6787a2;
   --background-color-secondary: #ffffff;
-  --background-color-accent: #999393;
+  --background-color-accent: #0a4d83;
   --text-color-primary: #212121;
   --text-color-secondary: #ffffff;
 }
@@ -16,39 +16,40 @@
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: var(--background-color);
-  box-shadow: 0px 9px 3px 0px #00000026;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 .search-form {
+  widows: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .search-form input {
-  width: 25vw;
-  height: 4vw;
+  width: 40%;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 10px;
-
   background-color: var(--background-color-secondary);
   border: none;
   border-radius: 4px 0 0 4px;
   margin-right: 0;
-  font-size: 2vw;
-  line-height: 3vw;
+  font: inherit;
 }
 .search-form button {
-  display: block;
   border: none;
   border-radius: 0 4px 4px 0;
-  width: 5vw;
-  height: 4vw;
+  width: 2.5em;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: rgb(200, 200, 200);
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.material-symbols-outlined {
+b .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
   font-size: 2vw;
   color: var(--text-color-primary);
@@ -63,16 +64,15 @@
   }
 }
 .wrapper {
-  z-index: 5;
-  padding-top: 20px;
-  @include tablet {
-    padding-top: 35px;
-  }
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
 }
 .gallery {
-  max-width: 468px;
+  // max-width: 468px;
   margin: 0 auto;
-  padding: 15px;
+  padding-top: 75px;
+
   @include tablet {
     max-width: 1200px;
     display: flex;
@@ -91,8 +91,7 @@
   border-radius: 0 15px 0 15px;
   overflow: hidden;
   transition: transform var(--animation-duration) var(--timing-function);
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   @media screen and (max-width: 768px) {
     &:not(:last-child) {
       margin-bottom: 15px;
@@ -146,7 +145,8 @@
   margin: 0 auto 15px;
   border: none;
   border-radius: 4px;
-  box-shadow: 0 7px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
   background-color: var(--background-color);
   color: var(--text-color-secondary);
   padding: 8px 15px;

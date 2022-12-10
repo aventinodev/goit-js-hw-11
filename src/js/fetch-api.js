@@ -12,7 +12,7 @@ export async function onFetch(query, page, perPage) {
 
     return data;
   } catch (error) {
-    console.error(error);
+    throw new Error(response.status);
   }
 }
 // ================METHOD FETCH============

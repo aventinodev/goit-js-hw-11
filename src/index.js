@@ -4,7 +4,7 @@ import { onFetch } from './js/fetch-api';
 import { markupCardGallery } from './js/template';
 import SimpleLightbox from '~node_modules/simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
+import './sass/main.scss';
 import * as append from './js/append';
 // import { onScroll } from './js/scroll';
 // import { onInfinityScroll } from './js/infinity_scroll';
@@ -74,9 +74,9 @@ async function onLoad(e) {
     onLockSubmitBtn();
     markupCardGallery(hits);
 
-    if (window.scrollY) {
-      window.scroll(0, 0);
-    }
+    // if (window.scrollY) {
+    //   window.scroll(0, 0);
+    // }
 
     await galleryLightbox.refresh();
   } catch (error) {

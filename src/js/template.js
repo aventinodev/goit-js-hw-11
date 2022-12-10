@@ -33,7 +33,7 @@ function templateCard({
 }
 function markupCardGallery(hits) {
   const galerryMarkup = hits.map(templateCard).join('');
-  refs.gallery.innerHTML = galerryMarkup;
+  refs.gallery.insertAdjacentHTML('beforeend', galerryMarkup);
 }
 
 export { markupCardGallery };

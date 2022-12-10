@@ -1,9 +1,4 @@
-// .sl-caption {
-//   color: #212121;
-//   background: #ffffff;
-// }
-
-.sl-caption {
-  $sl-caption-color: #212121;
-  $sl-caption-background: #ffffff;
+.sl-wrapper .sl-image .sl-caption {
+  color: #212121;
+  background-color: rgb(200, 200, 200);
 }

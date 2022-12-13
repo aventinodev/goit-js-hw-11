@@ -90,31 +90,47 @@ Pages, в ветку `gh-pages`, каждый раз когда обновляе
 
 ![How it works](./assets/how-it-works.png)
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
-   <!-- функціі  -->
-   // =================================== // function onSearch(e) { //
-   e.preventDefault();
+1.  После каждого пуша в ветку `main` GitHub-репозитория, запускается
+    специальный скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
+2.  Все файлы репозитория копируются на сервер, где проект инициализируется и
+    проходит сборку перед деплоем.
+3.  Если все шаги прошли успешно, собранная продакшн версия файлов проекта
+отправляется в ветку `gh-pages`. В противном случае, в логе выполнения скрипта
+будет указано в чем проблема. <!-- функціі  -->
+ <!-- function onSearch(e) { 
+    e.preventDefault(); page = 1; // onHideLoadBtn(); // refs.gallery.innerHTML
+    = ''; searchQuery = e.currentTarget.elements.searchQuery.value.trim();
+    onFetch(searchQuery, page, perPage) .then(({ hits, totalHits }) => { cards =
+    hits; amountCards = totalHits; 
+    if (!amountCards) { onInfo(); } else { onTotalHits(totalHits);
+markupCardGallery(cards); galleryLightbox.refresh(); } if (amountCards >
+perPage) { onShowLoadBtn(); onLockSubmitBtn(); } }) .catch(error => { onError();
+}); }
 
-// page = 1; // onHideLoadBtn(); // refs.gallery.innerHTML = ''; // searchQuery
-= e.currentTarget.elements.searchQuery.value.trim(); // onFetch(searchQuery,
-page, perPage) // .then(({ hits, totalHits }) => { // cards = hits; //
-amountCards = totalHits;
 
-// if (!amountCards) { // onInfo(); // } else { // onTotalHits(totalHits); //
-markupCardGallery(cards); // galleryLightbox.refresh(); // } // if
-(amountCards > perPage) { // onShowLoadBtn(); // onLockSubmitBtn(); // } // })
-// .catch(error => { // onError(); // }); // } //
-===================================================
-//======================================= // function onLoad(e) { // page += 1;
-// onFetch(searchQuery, page, perPage) // .then(({ hits, totalHits }) => { //
-markupCardGallery(hits); // galleryLightbox.refresh(); // onLockSubmitBtn();
+function onLoad(e) { page += 1; onFetch(searchQuery, page, perPage) .then(({
+hits, totalHits }) => { markupCardGallery(hits); galleryLightbox.refresh();
+onLockSubmitBtn();
 
-// if (amountCards - perPage \* page < perPage) { // unLockSubmitBtn(); //
-onHideLoadBtn(); // onReachedTheEnd(); // } // }) // .catch(error => { //
-onError(); // }); // } // ======================================
+if (amountCards - perPage \* page < perPage) { unLockSubmitBtn();
+onHideLoadBtn(); onReachedTheEnd(); } })\ .catch(error => { onError(); }); } -->
+
+<!-- const { height: cardHeight } = document
+  .querySelector('.gallery')
+  .firstElementChild.getBoundingClientRect();
+window.addEventListener('scroll', onScroll);
+
+export function onScroll() {
+  const cardHeight = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect().height;
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+}
+ -->
+<!--  if (window.scrollY) {
+      window.scroll(0, 0);
+    } -->

@@ -75,13 +75,13 @@ b .material-symbols-outlined {
   margin-bottom: 15px;
 
   @include tablet {
-    max-width: 1200px;
+    max-width: 1199px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
   }
   @include desktop {
-    max-width: 1400px;
+    min-width: 1200px;
   }
 }
 .gallery__wrap {
